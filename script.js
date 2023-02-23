@@ -20,9 +20,20 @@ function playRound(playerSelection, computerSelection){
         console.log("You Lose! Scissors beats Paper!");
     }else if(playerSelection == "scissors" && computerSelection == "rock"){
         console.log("You Lose! Rock beats Scissors!");
+    }else{
+        console.log("That's not a valid option! Try again")
     }
 }
 
-const playerSelection = "scissors";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+//console.log(playRound(playerSelection, computerSelection));
+
+function game(){
+    for (let i = 0; i < 5; i++){
+        const playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
+game();
