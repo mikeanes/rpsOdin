@@ -37,7 +37,10 @@ function game(){
     for (let i = 0; i < 5; i++){
         let playerSelection;
         do{
-            playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+            playerSelection = prompt("Rock, Paper, or Scissors?");
+            if(playerSelection !== null && playerSelection !== undefined){
+                playerSelection = playerSelection.toLowerCase();
+            }
             if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
                 alert("Invalid input. Please choose rock, paper, or scissors.");
         }
@@ -50,7 +53,7 @@ function game(){
     if(userWins >= 3){
         console.log("You won " + userWins + " out of 5 rounds. Congratulations, you won the game!");
     }else if(userWins === computerWins){
-        console.log("You tied every single round resulting in a draw. Play again!");
+        console.log("You scored the same amount of points as the computer resulting in a draw. Play again!");
     }else{
         console.log("You won " + userWins + " out of 5 rounds. Sorry, the computer beat you. Play again!");
     }
