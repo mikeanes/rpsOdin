@@ -6,7 +6,8 @@ function getComputerChoice(){
 }
 let userWins = 0;
 let computerWins = 0;
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection){
+    const computerSelection = getComputerChoice();
     if(playerSelection === computerSelection){
         console.log("It's a tie!");
         
@@ -29,28 +30,19 @@ function playRound(playerSelection, computerSelection){
         console.log("You Lose! Rock beats Scissors!");
         computerWins++;
     }
+    console.log("Your score: " + userWins);
 }
 
-const buttons = document.querySelectorAll('button');
-choice = buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        return button.id;
-        
-    });
-});
-function game(){
-        const playerSelection = choice;
-        const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-        console.log("Your current score: " + userWins);
-    }   
-   
-   
 
-    function getPlayerChoice(){
-       
-    }
-      
+
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button =>{
+        button.addEventListener('click', function(){
+            playRound(button.id);
+        });
+    });
+    
+   
 
 
 
