@@ -2,6 +2,7 @@
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button =>{
     button.addEventListener('click', function(){
+        playAudio(button.id);
         playRound(button.id);
     });
 });
@@ -16,6 +17,23 @@ function getComputerChoice(){
 let userWins = 0;
 let computerWins = 0;
 
+//Function to play respective sound
+let rockAudio = document.getElementById("rockAudio");
+let paperAudio = document.getElementById("paperAudio");
+let scissorsAudio = document.getElementById("scissorsAudio");
+
+function playAudio(playerSelection){
+    if(playerSelection == "rock"){
+        rockAudio.currentTime = 0;
+        rockAudio.play();
+    }else if(playerSelection == "paper"){
+        paperAudio.currentTime = 0;
+        paperAudio.play();
+    }else if(playerSelection == "scissors"){
+        scissorsAudio.currentTime = 0;
+        scissorsAudio.play();
+    }
+}
 
 //Function to compare user choice with computer to decide winner based on every outcome
 function playRound(playerSelection){
