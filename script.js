@@ -59,14 +59,15 @@ function playRound(playerSelection){
         document.getElementById('result').innerHTML = "You Lose! Rock beats Scissors!";
         computerWins++;
     }
-    document.getElementById('score').innerHTML = "Your score: " + userWins;
+    document.getElementById('playerScore').innerHTML = userWins;
+    document.getElementById('computerScore').innerHTML = computerWins;
 
     if(userWins == 5){
-        document.getElementById('score').innerHTML = "Congrats! You won the game!";
+        document.getElementById('result').innerHTML = "Congrats! You won the entire game!";
         userWins = 0;
         computerWins = 0;
     }else if(computerWins == 5){
-        document.getElementById('score').innerHTML = "Sorry, the computer beat you. Play again.";
+        document.getElementById('result').innerHTML = "Sorry, the computer beat you. Play again.";
         userWins = 0;
         computerWins = 0;
     }
