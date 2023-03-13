@@ -1,7 +1,17 @@
 .buttons{
     display: flex;
     justify-content: space-around;
+    padding: 20px;
 }
-.therock{
-    height: 100px;
+img{
+    height: 250px;
+}
+button{
+    width: 275px;
+    background: none;
+    border: none;
+    
+}
+button:hover{
+    margin-top: -20px;
 }
