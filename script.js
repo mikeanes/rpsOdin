@@ -1,3 +1,14 @@
+//Adds overlay on mousedown to each button
+const overlay = document.querySelectorAll('img');
+overlay.forEach(img =>{
+    img.addEventListener("mousedown", function(){
+        img.style.filter = "brightness(70%)";
+    });
+    img.addEventListener("mouseup", function(){
+        img.style.filter = "";
+    });
+});
+
 //Storing result text display in a variable to be able to revert to default
 let resultText = document.getElementById('result');
 let originalResultText = resultText.innerText;
@@ -94,7 +105,6 @@ playAgain.onclick = function(){
     resultText.innerText = originalResultText;
     modal.style.display = "none";
 }
-
 
 
 
