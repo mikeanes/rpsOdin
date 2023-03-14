@@ -1,3 +1,7 @@
+//Storing result text display in a variable to be able to revert to default
+let resultText = document.getElementById('result');
+let originalResultText = resultText.innerText;
+
 //Adding click listener to buttons and use input to playRound
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button =>{
@@ -16,6 +20,12 @@ function getComputerChoice(){
 //Initialize user wins and computer wins at 0 before starting game
 let userWins = 0;
 let computerWins = 0;
+
+//Function that updates scoreboard html
+function updateScore(){
+    document.getElementById('playerScore').innerHTML = userWins;
+    document.getElementById('computerScore').innerHTML = computerWins;
+}
 
 //Function to play respective sound
 let rockAudio = document.getElementById("rockAudio");
@@ -39,35 +49,36 @@ function playAudio(playerSelection){
 function playRound(playerSelection){
     const computerSelection = getComputerChoice();
     if(playerSelection === computerSelection){
-        document.getElementById('result').innerHTML = "It's a tie!";       
+        resultText.innerHTML = "It's a tie!";       
     }else if(playerSelection == "rock" && computerSelection == "scissors"){
         userWins++;
-        document.getElementById('result').innerHTML = "You Win! Rock beats Scissors!";
+        resultText.innerHTML = "You Win! Rock beats Scissors!";
     }else if(playerSelection == "paper" && computerSelection == "rock"){
         userWins++;
-        document.getElementById('result').innerHTML = "You Win! Paper beats Rock!";
+        resultText.innerHTML = "You Win! Paper beats Rock!";
     }else if(playerSelection == "scissors" && computerSelection == "paper"){
         userWins++;
-        document.getElementById('result').innerHTML = "You Win! Scissors beats Paper!";
+        resultText.innerHTML = "You Win! Scissors beats Paper!";
     }else if(playerSelection == "rock" && computerSelection == "paper"){
-        document.getElementById('result').innerHTML = "You Lose! Paper beats Rock!";
+        resultText.innerHTML = "You Lose! Paper beats Rock!";
         computerWins++;
     }else if(playerSelection == "paper" && computerSelection == "scissors"){
-        document.getElementById('result').innerHTML = "You Lose! Scissors beats Paper!";
+        resultText.innerHTML = "You Lose! Scissors beats Paper!";
         computerWins++;
     }else if(playerSelection == "scissors" && computerSelection == "rock"){
-        document.getElementById('result').innerHTML = "You Lose! Rock beats Scissors!";
+        resultText.innerHTML = "You Lose! Rock beats Scissors!";
         computerWins++;
     }
-    document.getElementById('playerScore').innerHTML = userWins;
-    document.getElementById('computerScore').innerHTML = computerWins;
+    updateScore();
 
     if(userWins == 5){
-        document.getElementById('result').innerHTML = "Congrats! You won the entire game!";
+        document.getElementById('gameResult').innerHTML = "You Won!";
+        modal.style.display = "block";
         userWins = 0;
         computerWins = 0;
     }else if(computerWins == 5){
-        document.getElementById('result').innerHTML = "Sorry, the computer beat you. Play again.";
+        document.getElementById('gameResult').innerHTML = "You Lost...";
+        modal.style.display = "block";
         userWins = 0;
         computerWins = 0;
     }
@@ -76,17 +87,14 @@ function playRound(playerSelection){
 
 // Modal Setup
 let modal = document.getElementById("myModal");
-let btn = document.getElementById("myBtn");
+let playAgain = document.getElementById("playAgain");
 
-btn.onclick = function(){
-    modal.style.display = "block";
+playAgain.onclick = function(){
+    updateScore();
+    resultText.innerText = originalResultText;
+    modal.style.display = "none";
 }
 
-window.onclick = function(event){
-    if(event.target == modal){
-        modal.style.display = "none";
-    }
-}
 
 
 
